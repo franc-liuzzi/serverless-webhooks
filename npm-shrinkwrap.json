@@ -1,12 +1,12 @@
 {
   "name": "serverless-webhooks",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "serverless-webhooks",
-      "version": "0.1.4",
+      "version": "0.1.5",
       "license": "MIT",
       "dependencies": {
         "@types/serverless": "^3.12.13",
