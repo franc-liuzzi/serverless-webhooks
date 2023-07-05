@@ -1,6 +1,6 @@
 {
   "name": "serverless-webhooks",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Serverless webhooks plugin",
   "author": {
     "name": "Francesco Liuzzi",
