@@ -1,15 +1,60 @@
-# Serverless Plugin
+# Serverless Webhooks Plugin
 
-This plugin has been generated using the `plugin` template from the [Serverless Framework](https://www.serverless.com/).
+This is a plugin to expand the [Serverless Framework](https://www.serverless.com/) with webhooks
 
-## Implementing your plugin
+## Installation
 
-When developing your plugin, please refer to the following sources:
+```
+serverless plugin install --name serverless-webhooks
+```
 
-- [Plugins Documentation](https://www.serverless.com/framework/docs/providers/aws/guide/plugins/)
-- [Blog - How to create serverless plugins - Part 1](https://serverless.com/blog/writing-serverless-plugins/)
-- [Blog - How to create serverless plugins - Part 2](https://serverless.com/blog/writing-serverless-plugins-2/)
+## Quick start
 
-## Sharing your plugin
+Once installed, define you webhooks in serverless.yml
 
-After implementing your plugin, you might consider sharing it with a wider audience. You might do it by adding it to `Community Contributed Plugins` in official [plugins repository](https://github.com/serverless/plugins).
+```yml
+service: my-app
+
+provider:
+  name: aws
+
+plugins:
+  - serverless-webhooks
+
+functions:
+  zuora-consumer:
+    handler: src/zuora-consumer.handler
+    events:
+      - eventBridge:
+          eventBus: ${webhooks:eventBus}
+          pattern:
+            source:
+              - zuora
+            detail-type:
+              - workflow_GET_example.finished
+              - workflow_POST_example.finished
+custom:
+  webhooks:
+    zuoraWorkflowGetExampleFinished:
+      route:  
+        method: GET
+        path: /webhooks/zuora/workflow_GET_example.finished
+      source: zuora
+      detailType: workflow_GET_example.finished
+      detail: $request.querystring.detail
+    zuoraWorkflowPostExampleFinished:
+      route:  
+        method: POST
+        path: /webhooks/zuora/workflow_POST_example.finished
+      source: zuora
+      detailType: workflow_POST_example.finished
+      detail: $request.body
+```
+
+## How it works
+
+This configuration will create:
+- 2 routes (without authorizer) in the default Api Gateway as below:
+  1. `GET /webhooks/zuora/workflow_GET_example.finished` that will recive the event detail from the query string parameter named `detail`
+  2. `POST /webhooks/zuora/workflow_POST_example.finished` that will recive the event detail from the body of the request
+- the `zuora-consumer` function will be triggered by any event with source `zuora` and detailType `workflow_GET_example.finished` or `workflow_POST_example.finished`
