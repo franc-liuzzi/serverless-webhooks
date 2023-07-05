@@ -1,0 +1,32 @@
+{
+  "name": "serverless-webhooks",
+  "version": "0.1.0",
+  "description": "Serverless webhooks plugin",
+  "author": {
+    "name": "Francesco Liuzzi",
+    "email": "franc.liuzzi@gmail.com"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@types/serverless": "^3.12.13",
+    "aws-cdk-lib": "^2.86.0",
+    "constructs": "^10.2.65",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "release-it": "^15.11.0",
+    "serverless": "^3.33.0",
+    "typescript": "^5.1.6"
+  },
+  "peerDependencies": {
+    "serverless": "2.x"
+  },
+  "engines": {
+    "node": ">=10.0"
+  },
+  "license": "MIT"
+}
