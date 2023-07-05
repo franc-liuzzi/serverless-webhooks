@@ -58,3 +58,6 @@ This configuration will create:
   1. `GET /webhooks/zuora/workflow_GET_example.finished` that will recive the event detail from the query string parameter named `detail`
   2. `POST /webhooks/zuora/workflow_POST_example.finished` that will recive the event detail from the body of the request
 - the `zuora-consumer` function will be triggered by any event with source `zuora` and detailType `workflow_GET_example.finished` or `workflow_POST_example.finished`
+
+## Issues
+Feel free to open any relevant issue on [Github](https://github.com/franc-liuzzi/serverless-webhooks/issues)
