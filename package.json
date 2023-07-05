@@ -6,6 +6,8 @@
     "name": "Francesco Liuzzi",
     "email": "franc.liuzzi@gmail.com"
   },
+  "repository": "https://github.com/franc-liuzzi/serverless-plugins",
+  "homepage": "https://github.com/franc-liuzzi/serverless-plugins",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -26,7 +28,10 @@
     "serverless": "3.x"
   },
   "engines": {
-    "node": ">=10.0"
+    "node": ">=16.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ]
 }

@@ -54,10 +54,11 @@ custom:
 ## How it works
 
 This configuration will create:
-- 2 routes (without authorizer) in the default Api Gateway as below:
-  1. `GET /webhooks/zuora/workflow_GET_example.finished` that will recive the event detail from the query string parameter named `detail`
-  2. `POST /webhooks/zuora/workflow_POST_example.finished` that will recive the event detail from the body of the request
-- the `zuora-consumer` function will be triggered by any event with source `zuora` and detailType `workflow_GET_example.finished` or `workflow_POST_example.finished`
+- A shared event bus (referenced in the variable `${webhooks:eventBus}`).
+- 2 routes (without an authorizer) in the default API Gateway as follows:
+  1. `GET /webhooks/zuora/workflow_GET_example.finished`, which will receive the event **detail** from the query string parameter named `detail`.
+  2. `POST /webhooks/zuora/workflow_POST_example.finished`, which will receive the event **detail** from the body of the request.
+- The `zuora-consumer` function will be triggered by any event with the **source** `zuora` and **detailType** `workflow_GET_example.finished` or `workflow_POST_example.finished`.
 
 ## Issues
-Feel free to open any relevant issue on [Github](https://github.com/franc-liuzzi/serverless-webhooks/issues)
+Feel free to open any relevant issue on [Github](https://github.com/franc-liuzzi/serverless-webhooks/issues).
