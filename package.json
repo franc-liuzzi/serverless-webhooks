@@ -8,6 +8,10 @@
   },
   "repository": "https://github.com/franc-liuzzi/serverless-webhooks",
   "homepage": "https://github.com/franc-liuzzi/serverless-webhooks",
+  "keywords": [
+    "serverless",
+    "webhooks"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
